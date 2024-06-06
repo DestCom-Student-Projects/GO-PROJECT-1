@@ -1,0 +1,4 @@
+package pdfBuilder
+
+func GeneratePDF() {
+}

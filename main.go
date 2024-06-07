@@ -13,13 +13,13 @@ func main() {
 		menu.DisplayBase()
 		menu.DisplayMenuOne(false)
 
-		inpts := menu.Inputs([]string{"1", "2"})
+		inpts := menu.Inputs([]string{"1", "2", "3"})
 
 		if inpts == 1 {
-			var lockedLoop bool = false
+			var lockedLoopOne bool = false
 			var choice int
 
-			for !lockedLoop {
+			for !lockedLoopOne {
 				menu.DisplayMenuCustomers()
 				choice = menu.Inputs([]string{"1", "2", "3"})
 				switch choice {
@@ -28,19 +28,17 @@ func main() {
 				case 2:
 					services.BuyProduct()
 				case 3:
-					lockedLoop = true
+					lockedLoopOne = true
 				default:
 					menu.DisplayErrors("Invalid choice, exiting...")
 					return
 				}
 			}
-			
-
 		} else if inpts == 2 {
-			var lockedLoop bool = false
+			var lockedLoopTwo bool = false
 			var choice int
 
-			for !lockedLoop {
+			for !lockedLoopTwo {
 				menu.DisplayMenuAdmins()
 				choice = menu.Inputs([]string{"1", "2", "3", "4", "5", "6", "7", "8", "9"})
 				switch choice {
@@ -61,12 +59,15 @@ func main() {
 				case 8:
 					services.ListingsServices()
 				case 9:
-					lockedLoop = true
+					lockedLoopTwo = true
 				default:
 					menu.DisplayErrors("Invalid choice, exiting...")
 					return
 				}
 			}
+		} else if inpts == 3 {
+			menu.DisplayGoodbye()
+			locked = true
 		} else {
 			menu.DisplayErrors("Invalid choice, exiting...")
 			return

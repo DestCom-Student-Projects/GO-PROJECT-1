@@ -32,7 +32,7 @@ func DisplayMenuCustomers(){
 	ClearScreen()
 	fmt.Println("1. Display products")
 	fmt.Println("2. Buy product")
-	fmt.Println("3. Go back")
+	fmt.Println("3. Exit")
 }
 
 func DisplayMenuProducts(products []database.Product){
@@ -54,7 +54,7 @@ func DisplayMenuAdmins(){
 	fmt.Println("6. Delete customer")
 	fmt.Println("7. Export menu")
 	fmt.Println("8. Listings menu")
-	fmt.Println("9. Go back")
+	fmt.Println("9. Exit")
 }
 
 func DisplayMenuListings(){
@@ -75,6 +75,10 @@ func DisplayMenuExport(){
 
 func DisplayErrors(err string){
 	fmt.Println(err)
+}
+
+func DisplayGoodbye(){	
+	fmt.Println("Goodbye")
 }
 
 func ClearScreen(){

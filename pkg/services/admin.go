@@ -371,10 +371,19 @@ func ExportServices(){
 	}
 }
 
-func ExportProducts(){
+func ExportProducts() {
+	var err error
 	products := database.GetProducts(false)
 
-	file, err := os.Create("products.csv")
+	if _ , err := os.Stat("csv"); os.IsNotExist(err) {
+        err := os.Mkdir("csv", 0755)
+        if err != nil {
+			println("Error creating directory")
+			return
+        }
+    }
+
+	file, err := os.Create("csv/products.csv")
 
 	if err != nil {
 		fmt.Println(err)
@@ -400,7 +409,15 @@ func ExportProducts(){
 func ExportCustomers(){
 	customers := database.GetCustomers()
 
-	file, err := os.Create("customers.csv")
+	if _ , err := os.Stat("csv"); os.IsNotExist(err) {
+        err := os.Mkdir("csv", 0755)
+        if err != nil {
+			println("Error creating directory")
+			return
+        }
+    }
+
+	file, err := os.Create("csv/customers.csv")
 
 	if err != nil {
 		fmt.Println(err)

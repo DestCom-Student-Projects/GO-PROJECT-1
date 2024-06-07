@@ -1,4 +1,25 @@
 services:
+  goapp:
+    container_name: go-supermarket
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    depends_on:
+      - db
+    tty: true
+    environment:
+      - DB_USER=${MARIADB_USER:-user}
+      - DB_PASSWORD=${MARIADB_PASSWORD:-password}
+      - DB_NAME=${MARIADB_DATABASE:-database}
+      - DB_HOST=${DB_HOST:-db}
+      - DB_PORT=${MARIADB_PORT:-3306}
+      - MAIL_SERVER=${MAIL_SERVER:-mailpit}
+      - MAIL_PORT=${MAIL_PORT:-1025}
+      - MAIL_SENDER=${MAIL_SENDER:-noreply@grocery-store.online}
+    volumes:
+      - ./production_data/pdfs:/app/orders_pdf:rw
+      - ./production_data/csvs:/app/csv:rw
   db:
     image: mariadb:10.3
     container_name: mariadb

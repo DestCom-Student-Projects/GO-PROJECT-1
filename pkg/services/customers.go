@@ -10,6 +10,7 @@ import (
 	"github.com/DestCom-Student-Projects/GO-PROJECT-1/pkg/database"
 	"github.com/DestCom-Student-Projects/GO-PROJECT-1/pkg/mail"
 	"github.com/DestCom-Student-Projects/GO-PROJECT-1/pkg/menu"
+	pdfBuilder "github.com/DestCom-Student-Projects/GO-PROJECT-1/pkg/pdf"
 )
 
 
@@ -121,6 +122,8 @@ func ProceedToBuy(product database.Product, quantity int, customer database.Cust
 
 	subject := fmt.Sprintf("Order confirmation #%d-%d", customer.ID, buyed.ID)
     body := fmt.Sprintf("Your order has been confirmed. You bought %d %s. For reference, your order ID is %d", quantity, product.Titre, buyed.ID)
+	pdfBuilder.GeneratePDF(product, quantity, customer, buyed)
+	filepath := fmt.Sprintf("orders_pdf/order-%d-%d.pdf", customer.ID, buyed.ID)
 
-	mail.SendMail(customer.Email, subject, body)
+	mail.SendMail(customer.Email, subject, body, filepath)
 }

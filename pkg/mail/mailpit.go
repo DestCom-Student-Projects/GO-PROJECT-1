@@ -17,7 +17,7 @@ func NewEmailClient() *mail.Dialer {
     return dialer
 }
 
-func SendMail(to, subject, body string) error {
+func SendMail(to, subject, body, filepath string) error {
 	e := NewEmailClient()
 
     mailSender:= environnement.GetEnv("MAIL_SENDER")
@@ -27,6 +27,9 @@ func SendMail(to, subject, body string) error {
     msg.SetHeader("To", to)
     msg.SetHeader("Subject", subject)
     msg.SetBody("text/plain", body)
+    if (len(filepath) > 0) {
+        msg.Attach(filepath)
+    }
 
     return e.DialAndSend(msg)
 }

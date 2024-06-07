@@ -12,6 +12,6 @@ require (
 	github.com/joho/godotenv v1.5.1
 	github.com/jung-kurt/gofpdf v1.16.2
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
-	gorm.io/driver/mysql v1.5.6 // indirect
-	gorm.io/gorm v1.25.10 // indirect
+	gorm.io/driver/mysql v1.5.6
+	gorm.io/gorm v1.25.10
 )

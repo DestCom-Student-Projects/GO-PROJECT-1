@@ -512,3 +512,6 @@ func ListOrders(){
 		fmt.Printf("%d. %d %d\n", order.ID, order.IDClient, order.IDProduit)
 	}
 }
+
+
+//AZEVEDO-DA-SILVA, A. (2024) GO-PROJECT-1. [Source code] https://github.com/DestCom-Student-Projects/GO-PROJECT-1
